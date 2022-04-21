@@ -2,6 +2,8 @@
   <p id="notice"></p>
   <h1>Books</h1>
 
+
+
   <table>
     <thead>
       <tr>
@@ -11,14 +13,17 @@
       </tr>
     </thead>
 
+  <%= @books.each do |book| %>
+
     <tbody>
       <tr>
-        <td>リーダブルコード</td>
-        <td>より良いコードを書くためにシンプル実践的なテクニック</td>
-        <td><a class="show"></td>
+        <td><%= book.title %></td>
+        <td><%= book.body %></td>
+        <td><!--< link_to "show", book_path(book.id) %> --></td>
         <td><a class="Edit"></td>
         <! <td><a class="Destroy"></td>
       </tr>
+  <% end %>
 
       <tr>
         <td>トラブル知らずのシステム設計</td>
@@ -27,7 +32,7 @@
         <td><a class="Edit"></td>
         <td><a class="Destroy"></td>
       </tr>
-      
+
       <tr>
         <td>楽しいRuby</td>
         <td>Rubyの入門におすすめです</td>
@@ -35,7 +40,7 @@
         <td><a class="Edit"></td>
         <td><a class="Destroy"></td>
       </tr>
-        
+
       <tr>
         <td>入門Git</td>
         <td>gitについて基本操作から内部構造まで解説し手くれます</td>
@@ -43,7 +48,7 @@
         <td><a class="Edit"></td>
         <td><a class="Destroy"></td>
       </tr>
-      
+
       <tr>
         <td>アルゴリズム図鑑</td>
         <td>アルゴリズムについてカラーイラストでしっかり説明してくれます</td>
@@ -51,7 +56,7 @@
         <td><a class="Edit"></td>
         <td><a class="Destroy"></td>
       </tr>
-      
+
       <tr>
         <td>達人プログラマー</td>
         <td>プログラマ入門者は必見</td>
@@ -59,8 +64,8 @@
         <td><a class="Edit"></td>
         <td><a class="Destroy"></td>
       </tr>
-      
-        
+
+
 
 
 
@@ -71,3 +76,15 @@
 
   </table>
 
+<h1>New book</h1>
+<%= form_with model: @book, url:'/books', local:true do |f| %>
+  <h4> Title </h4>
+  <%= f.text_field :title %>
+
+  <h4> Body </h4>
+  <%= f.text_area :body %>
+
+
+  <%= f.submit 'Create Book ' %>
+
+<%  end  %>
