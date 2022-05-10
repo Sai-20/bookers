@@ -7,5 +7,11 @@ Rails.application.routes.draw do
   # get '/books' => "books#index"
   # post 'books' => "books#creat"
   get '/top' => "homes#top"
-  resources :books
+  resources :books  
+
 end
+
+
+
+
+
